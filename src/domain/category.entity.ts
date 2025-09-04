@@ -19,7 +19,7 @@ export class Category {
   is_active: boolean;
   created_at: Date;
 
-  //apenas um construtor, diferente do create, nao possui regra de negocio
+  //just a constructor, different from create, has no business rule
   constructor(props: CategoryContructorProps) {
     this.category_id = props.category_id;
     this.name = props.name;
@@ -27,19 +27,19 @@ export class Category {
     this.is_active = props.is_active ?? true;
     this.created_at = props.created_at ?? new Date();
   }
-  //factory method- possui regra de negocio, validacoes e etc
+  //factory method- has business rules, validations, etc.
   static create(props: CategoryContructorProps): Category {
     return new Category(props);
   }
 
-  //por ser muito generico acaba nao sendo a melhor opcao
+  //update is too generic, then its not a good option to use
   // update(props: Partial<CategoryContructorProps>) : Category {
   //     return new Category({...this, ...props})
   // }
 
-  // boa pratica pois dessa forma representa uma operacao de troca de nome
-  //  onde colocaremos regras de negocio e validacoes para essa operacao e eventos tambem
-  // *diferente do setter que deve ser usado apenas dentro da classe pois representa apenas uma mudanca de valor
+  // Change name is a good a better practice
+  // we can have business rules, validations and events for this operations. 
+  // *different from setter that can be used only inside classes, because its a value changer
   changeName(name: string): void {
     this.name = name;
   }
